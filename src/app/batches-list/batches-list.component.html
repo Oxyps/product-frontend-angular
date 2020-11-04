@@ -1,0 +1,37 @@
+<div class="container d-flex my-4 justify-content-between">
+  <h3>Listagem de lotes</h3>
+
+  <a
+    role="button"
+    aria-pressed="true"
+    class="btn btn-success btn-lg"
+    routerLink="#"
+    routerLinkActive="active"
+  >Cadastrar</a>
+</div>
+
+<table class="container table table-hover">
+  <caption>Lotes cadastrados: 8</caption>
+
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" width="100">Código</th>
+      <th scope="col" width="10">Tamanho</th>
+      <th scope="col" width="200">Fabricante</th>
+      <th scope="col" width="150">Data de fabricação</th>
+      <th scope="col" width="150">Data de validade</th>
+      <th class="text-center" scope="col" width="150">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let b of batches">
+      <th scope="row">{{b.code}}</th>
+      <td>{{b.size}}</td>
+      <td>{{b.producer}}</td>
+      <td>{{b.produce_date}}</td>
+      <td>{{b.shelf_life}}</td>
+      <td class="text-center">editar/deletar</td>
+    </tr>
+  </tbody>
+</table>
