@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              // CoreUI CSS
+              "node_modules/@coreui/coreui/dist/css/coreui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              // CoreUI JS
+              "node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
