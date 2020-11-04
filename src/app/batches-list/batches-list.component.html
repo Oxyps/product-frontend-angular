@@ -11,7 +11,7 @@
 </div>
 
 <table class="container table table-hover">
-  <caption>Lotes cadastrados: 8</caption>
+  <caption>Lotes cadastrados: 3</caption>
 
   <thead class="thead-dark">
     <tr>
@@ -31,7 +31,15 @@
       <td>{{b.producer}}</td>
       <td>{{b.produce_date}}</td>
       <td>{{b.shelf_life}}</td>
-      <td class="text-center">editar/deletar</td>
+
+      <td class="text-center">
+        <button type="button" class="btn">
+          <i class="cil-pencil"></i>
+        </button>
+        <button type="button" class="btn">
+          <i class="cil-trash"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

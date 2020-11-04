@@ -26,7 +26,12 @@
             "styles": [
               "src/styles.css",
               // CoreUI CSS
-              "node_modules/@coreui/coreui/dist/css/coreui.min.css"
+              "node_modules/@coreui/coreui/dist/css/coreui.min.css",
+              // CoreUI Icons CSS
+              "node_modules/@coreui/icons/css/all.min.css",
+              "node_modules/@coreui/icons/css/free.min.css",
+              "node_modules/@coreui/icons/css/brand.min.css",
+              "node_modules/@coreui/icons/css/flag.min.css"
             ],
             "scripts": [
               // CoreUI JS

@@ -16,7 +16,7 @@ import { BatchesListComponent } from './batches-list/batches-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
