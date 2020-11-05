@@ -10,7 +10,7 @@
   >Cadastrar</a>
 </div>
 
-<table class="container table table-hover">
+<table class="container table table-hover text-center">
   <caption>Produtos cadastrados: 8</caption>
 
   <thead class="thead-dark">
@@ -20,25 +20,38 @@
       <th scope="col" width="50">Preço</th>
       <th scope="col" width="200">Lote</th>
       <th scope="col">Descrição</th>
-      <th class="text-center" scope="col" width="150">Ações</th>
+      <th scope="col" width="150">Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let p of products">
-      <th scope="row">{{p.id}}</th>
-      <td>{{p.nome}}</td>
-      <td>{{p.preco}}</td>
-      <td>{{p.batch}}</td>
-      <td>{{p.descricao}}</td>
+      <th class="align-middle" scope="row">{{p.id}}</th>
+      <td class="align-middle">{{p.nome}}</td>
+      <td class="align-middle">{{p.preco}}</td>
+      <td class="align-middle">{{p.batch}}</td>
+      <td class="align-middle">{{p.descricao}}</td>
 
-      <td class="text-center">
-        <button type="button" class="btn">
+      <td>
+        <a
+          role="button"
+          aria-pressed="true"
+          class="btn btn-lg"
+          routerLink="#edit"
+          routerLinkActive="active"
+        >
           <i class="cil-pencil"></i>
-        </button>
-        <button type="button" class="btn">
+        </a>
+
+        <a
+          role="button"
+          aria-pressed="true"
+          class="btn btn-lg"
+          routerLink="#delete"
+          routerLinkActive="active"
+        >
           <i class="cil-trash"></i>
-        </button>
+        </a>
       </td>
     </tr>
   </tbody>
