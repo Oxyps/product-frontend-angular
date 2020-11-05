@@ -16,7 +16,7 @@ export class ProductsListComponent implements OnInit {
     { id: 6, nome: 'morango', descricao: 'Bandeja de morangos grande e avermelhados', preco: '5', batch: '3' },
     { id: 7, nome: 'açaí', descricao: 'Balde de açaí 3l', preco: '30', batch: '1' },
     { id: 8, nome: 'banana', descricao: 'Cacho de banana madura', preco: '7', batch: '2' },
-  ]
+  ];
 
   constructor() { }
 

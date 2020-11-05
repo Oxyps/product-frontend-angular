@@ -1,0 +1,196 @@
+  <div class="container col-6 d-flex align-items-center justify-content-lg-between">
+    <h2 class="my-4">Cadastro de Lotes</h2>
+
+    <button (click)="location.back()" class="btn btn-info col-3">Voltar</button>
+  </div>
+
+  <form
+    [formGroup]="batchForm"
+    (ngSubmit)="onSubmit()"
+    class="container text-center"
+    novalidate
+    autocomplete="off"
+  >
+    <div class="form-group">
+      <label for="code" class="col-sm-6 col-form-label col-form-label-lg text-left">
+        Código do lote
+
+        <div class="input-group mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+
+          <input
+            formControlName="code"
+            id="code"
+            type="text"
+            placeholder="BCM12188"
+            class="
+              form-control
+              form-control-lg
+              {{
+                batchForm.controls.code.invalid &&
+                (batchForm.controls.code.dirty || batchForm.controls.code.touched)
+                ? 'is-invalid' : ''
+              }}
+            "
+          >
+
+          <div
+            class="invalid-feedback"
+          >
+            <span *ngIf="batchForm.controls.code.errors?.required">
+              O código do lote deve ser preenchido.
+            </span>
+            <span *ngIf="batchForm.controls.code.errors?.maxlength">
+              O código do lote deve possuir no máximo 50 caracteres.
+            </span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="producer" class="col-sm-6 col-form-label col-form-label-lg text-left">
+        Nome do fabricante
+        <input
+          formControlName="producer"
+          id="producer"
+          type="text"
+          placeholder="Empresa do seu Zé"
+          class="
+            form-control
+            form-control-lg
+            mt-2
+            {{
+              batchForm.controls.producer.invalid &&
+              (batchForm.controls.producer.dirty || batchForm.controls.producer.touched)
+              ? 'is-invalid' : ''
+            }}
+          "
+        >
+
+        <div
+          class="invalid-feedback"
+        >
+          <span *ngIf="batchForm.controls.producer.errors?.required">
+            O nome do fabricante do lote deve ser preenchido.
+          </span>
+          <span *ngIf="batchForm.controls.producer.errors?.maxlength">
+            O nome do fabricante do lote deve possuir no máximo 20 caracteres.
+          </span>
+        </div>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="size" class="col-sm-6 col-form-label col-form-label-lg text-left">
+        Tamanho dos produtos
+
+        <select
+          formControlName="size"
+          id="size"
+          class="
+            custom-select
+            form-control
+            form-control-lg
+            mt-2
+            {{
+              batchForm.controls.size.invalid &&
+              (batchForm.controls.size.dirty || batchForm.controls.size.touched)
+              ? 'is-invalid' : ''
+            }}
+          "
+        >
+          <option *ngFor="let size of sizes" [ngValue]="size" disabled={{size.disabled}}>
+            {{ size.name }}
+          </option>
+        </select>
+
+        <div
+          class="invalid-feedback"
+        >
+          <span *ngIf="batchForm.controls.code.errors?.required">
+            O tamanho dos produtos do lote deve ser especificado.
+          </span>
+        </div>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="produce_date" class="col-sm-6 col-form-label col-form-label-lg text-left">
+        Data da produção
+        <input
+          formControlName="produce_date"
+          id="produce_date"
+          type="date"
+          placeholder="01/11/1999"
+          class="
+            form-control
+            form-control-lg
+            mt-2
+            {{
+              batchForm.controls.produce_date.invalid &&
+              (batchForm.controls.produce_date.dirty || batchForm.controls.produce_date.touched)
+              ? 'is-invalid' : ''
+            }}
+          "
+        >
+
+        <div
+          class="invalid-feedback"
+        >
+          <span *ngIf="batchForm.controls.produce_date.errors?.required">
+            O data de fabricação do lote deve ser preenchida.
+          </span>
+          <!--
+          <span *ngIf="batchForm.controls.produce_date.errors?.maxlength">
+            O nome do fabricante do lote deve possuir no máximo 20 caracteres.
+          </span>
+          -->
+        </div>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="shelf_life" class="col-sm-6 col-form-label col-form-label-lg text-left">
+        Data da validade
+        <input
+          formControlName="shelf_life"
+          id="shelf_life"
+          type="date"
+          placeholder="01/11/2001"
+          class="
+            form-control
+            form-control-lg
+            mt-2
+            {{
+              batchForm.controls.shelf_life.invalid &&
+              (batchForm.controls.shelf_life.dirty || batchForm.controls.shelf_life.touched)
+              ? 'is-invalid' : ''
+            }}
+          "
+        >
+
+        <div
+          class="invalid-feedback"
+        >
+          <span *ngIf="batchForm.controls.shelf_life.errors?.required">
+            A data de validade do lote deve ser preenchida.
+          </span>
+          <!--
+          <span *ngIf="batchForm.controls.shelf_life.errors?.maxlength">
+            O nome do fabricante do lote deve possuir no máximo 20 caracteres.
+          </span>
+          -->
+        </div>
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      class="col-sm-8 btn btn-success form-control-lg text-center my-4"
+    >
+      Cadastrar
+    </button>
+  </form>
