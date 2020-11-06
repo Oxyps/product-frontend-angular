@@ -10,6 +10,63 @@
     class="container text-center"
     autocomplete="off"
   >
+
+    <app-text-input
+      specialChar="#"
+      [form]="batchForm"
+      name="code"
+      label="Código do lote"
+      requiredError="O código do lote deve ser preenchido."
+      [requiredValid]="batchForm.controls.code.errors?.required"
+      maxlengthError="O código do lote deve ter no máximo 50 caracteres."
+      [maxlengthValid]="batchForm.controls.code.errors?.maxlength"
+      placeholder="BCM12188"
+      [CSS]="displayFieldCss('code')"
+      ></app-text-input>
+
+    <app-text-input
+      [form]="batchForm"
+      name="producer"
+      label="Fabricante do lote"
+      [requiredValid]="batchForm.controls.producer.errors?.required"
+      requiredError="O fabricante do lote deve ser identificado."
+      [maxlengthValid]="batchForm.controls.producer.errors?.maxlength"
+      maxlengthError="O nome do fabricante do lote deve ter no máximo 20 caracteres."
+      placeholder="BCM12188"
+      [CSS]="displayFieldCss('producer')"
+    ></app-text-input>
+
+    <app-select-input
+      [form]="batchForm"
+      name="size"
+      label="Tamanho dos produtos"
+      [wasntSelected]="this.batchForm.controls.size.errors ? !this.batchForm.controls.size.errors.wasSelected : false"
+      wasntSelectedError="Um tamanho para os produtos do lote deve ser especificado."
+      [options]="sizes"
+      [CSS]="displayFieldCss('size')"
+    ></app-select-input>
+
+    <app-date-input
+      [form]="batchForm"
+      name="produce_date"
+      label="Data de fabricação"
+      [requiredNotValid]="batchForm.controls.produce_date.errors?.required"
+      requiredNotValidError="A data de fabricação do lote deve ser especificada."
+      [CSS]="displayFieldCss('produce_date')"
+    ></app-date-input>
+
+    <app-date-input
+      [form]="batchForm"
+      name="shelf_life"
+      label="Data de validade"
+      [requiredNotValid]="batchForm.controls.shelf_life.errors?.required"
+      requiredNotValidError="A data de validade do lote deve ser especificada."
+      [CSS]="displayFieldCss('shelf_life')"
+    ></app-date-input>
+
+
+
+    <!--
     <div class="form-group">
       <label for="code" class="col-sm-6 col-form-label col-form-label-lg text-left">
         Código do lote
@@ -24,25 +81,24 @@
             id="code"
             type="text"
             placeholder="BCM12188"
-            class="
-              form-control
-              form-control-lg
-            "
+            class="form-control form-control-lg"
             [ngClass]="displayFieldCss('code')"
           >
 
           <div *ngIf="batchForm.invalid" class="invalid-feedback">
-            <span *ngIf="batchForm.controls.code.errors?.required">
-              O código do lote deve ser preenchido.
-            </span>
             <span *ngIf="batchForm.controls.code.errors?.maxlength">
               O código do lote deve possuir no máximo 50 caracteres.
+            </span>
+            <span *ngIf="batchForm.controls.code.errors?.required">
+              O código do lote deve ser preenchido.
             </span>
           </div>
         </div>
       </label>
     </div>
+    -->
 
+    <!--
     <div class="form-group">
       <label for="producer" class="col-sm-6 col-form-label col-form-label-lg text-left">
         Nome do fabricante
@@ -51,11 +107,7 @@
           id="producer"
           type="text"
           placeholder="Empresa do seu Zé"
-          class="
-            form-control
-            form-control-lg
-            mt-2
-          "
+          class="form-control form-control-lg mt-2"
           [ngClass]="displayFieldCss('producer')"
         >
 
@@ -69,7 +121,9 @@
         </div>
       </label>
     </div>
+    -->
 
+    <!--
     <div class="form-group">
       <label for="size" class="col-sm-6 col-form-label col-form-label-lg text-left">
         Tamanho dos produtos
@@ -86,13 +140,15 @@
         </select>
 
         <div *ngIf="batchForm.invalid" class="invalid-feedback">
-          <span *ngIf="batchForm.controls.code.errors?.required">
+          <span *ngIf="batchForm.controls.size.errors?.required">
             O tamanho dos produtos do lote deve ser especificado.
           </span>
         </div>
       </label>
     </div>
+    -->
 
+    <!--
     <div class="form-group">
       <label for="produce_date" class="col-sm-6 col-form-label col-form-label-lg text-left">
         Data da produção
@@ -101,11 +157,7 @@
           id="produce_date"
           type="date"
           placeholder="01/11/1999"
-          class="
-            form-control
-            form-control-lg
-            mt-2
-          "
+          class="form-control form-control-lg mt-2"
           [ngClass]="displayFieldCss('produce_date')"
         >
 
@@ -116,7 +168,9 @@
         </div>
       </label>
     </div>
+    -->
 
+    <!--
     <div class="form-group">
       <label for="shelf_life" class="col-sm-6 col-form-label col-form-label-lg text-left">
         Data da validade
@@ -136,6 +190,7 @@
         </div>
       </label>
     </div>
+    -->
 
     <button type="submit" class="col-sm-8 btn btn-success form-control-lg text-center my-4">
       Cadastrar

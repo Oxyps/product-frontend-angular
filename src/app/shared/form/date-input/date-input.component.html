@@ -1,0 +1,19 @@
+<div class="form-group" [formGroup]="form">
+  <label for={{name}} class="col-sm-6 col-form-label col-form-label-lg text-left">
+    {{label}}
+
+    <input
+      formControlName={{name}}
+      id={{name}}
+      type="date"
+      class="form-control form-control-lg mt-2"
+      [ngClass]="CSS"
+    >
+
+    <div *ngIf="form.invalid" class="invalid-feedback">
+      <span *ngIf="requiredNotValid">
+        {{requiredNotValidError}}
+      </span>
+    </div>
+  </label>
+</div>

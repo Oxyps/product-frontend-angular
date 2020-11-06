@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { BatchesListComponent } from './batches-list/batches-list.component';
-import { CreateBatchFormComponent } from './create-batch-form/create-batch-form.component';
+import { ListProductsComponent } from './product-page/list-products/list-products.component';
+
+import { ListBatchesComponent } from './batch-page/list-batches/list-batches.component';
+import { CreateBatchComponent } from './batch-page/create-batch/create-batch.component';
 
 const routes: Routes = [
-  { path: 'products', component: ProductsListComponent },
-  { path: 'batches', component: BatchesListComponent },
-  { path: 'create', component: CreateBatchFormComponent }
+  { path: 'products', component: ListProductsComponent },
+
+  { path: 'batches', component: ListBatchesComponent },
+  { path: 'create-batch', component: CreateBatchComponent }
 ];
 
 @NgModule({

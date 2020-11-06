@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.css']
+  templateUrl: './list-products.component.html',
+  styleUrls: ['./list-products.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class ListProductsComponent implements OnInit {
 
   products = [
     { id: 1, nome: 'jaca', descricao: 'Jaca plantada na fazenda do seu Zé', preco: '20.50', batch: '1' },

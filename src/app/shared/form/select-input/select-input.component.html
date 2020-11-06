@@ -1,0 +1,22 @@
+<div class="form-group" [formGroup]="form">
+  <label for="size" class="col-sm-6 col-form-label col-form-label-lg text-left">
+    {{label}}
+
+    <select
+      formControlName={{name}}
+      id={{name}}
+      class="custom-select form-control form-control-lg mt-2"
+      [ngClass]="CSS"
+    >
+      <option *ngFor="let option of options" [ngValue]="option" disabled={{option.disabled}}>
+        {{ option.name }}
+      </option>
+    </select>
+
+    <div *ngIf="form.invalid" class="invalid-feedback">
+      <span *ngIf="wasntSelected">
+        {{wasntSelectedError}}
+      </span>
+    </div>
+  </label>
+</div>
