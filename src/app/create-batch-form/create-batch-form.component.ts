@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
+import { nullValueSelectValidator } from '../validators/null-value-select.directive';
+
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-batch-form.component.html',
@@ -10,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class CreateBatchFormComponent implements OnInit {
   sizes = [
-    { name: 'Escolha um tamanho', value: '', disabled: true },
+    { name: 'Escolha um tamanho', value: null, disabled: true },
     { name: 'Pequeno', value: 'P' },
     { name: 'Médio', value: 'M' },
     { name: 'Grande', value: 'G' },
@@ -43,24 +45,22 @@ export class CreateBatchFormComponent implements OnInit {
       size: new FormControl(
         this.sizes[0],
         [
+          Validators.required,
           // validar se escolheu mesmo a opção
+          nullValueSelectValidator
         ]
       ),
       produce_date: new FormControl(
-        // new Date('01/01/2018'),
         null,
         [
           Validators.required,
-          // validar formato dessa data
           // data nao pode ser maior que a validade
         ]
       ),
       shelf_life: new FormControl(
-        // new Date(),
         null,
         [
           Validators.required
-          // validar formato dessa data
           // data precisa ser maior que a de produção
         ]
       )
@@ -68,29 +68,34 @@ export class CreateBatchFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.batchForm.invalid) {
-      // const forms = document.getElementsByClassName('needs-validation');
-
-      // const validation = Array.prototype.filter.call(forms, form => {
-      //   form.addEventListener('submit', event => {
-      //     if (form.checkValidity() === false) {
-      //       event.preventDefault();
-      //       event.stopPropagation();
-      //     }
-      //     form.classList.add('was-validated');
-      //   }, false);
-      // });
-    } else {
+    if (this.batchForm.valid) {
       console.log(this.batchForm.value);
+    } else {
+      this.validateAllFormFields(this.batchForm);
     }
+  }
 
-    // console.log(this.batchForm.controls.code);
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
 
-    // console.log('erros ' + this.batchForm.errors);
-    // console.log('tocado ' + this.batchForm.touched);
-    // console.log('sujo ' + this.batchForm.dirty);
-    // console.log('status ' + this.batchForm.status);
-    // console.log('invalido ' + this.batchForm.invalid);
+  isFieldValid(field: string) {
+    const control = this.batchForm.get(field);
 
+    return control.valid && (control.dirty || control.touched);
+  }
+
+  displayFieldCss(field: string) {
+    return {
+      'is-valid': this.isFieldValid(field),
+      'is-invalid': !this.isFieldValid(field)
+    };
   }
 }
