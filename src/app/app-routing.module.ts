@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ListProductsComponent } from './product-page/list-products/list-products.component';
-import { CreateProductComponent } from './product-page/create-product/create-product.component';
+import { ListProductsComponent } from './pages/product/list/list.component';
+import { CreateProductComponent } from './pages/product/create/create.component';
 
-import { ListBatchesComponent } from './batch-page/list-batches/list-batches.component';
-import { CreateBatchComponent } from './batch-page/create-batch/create-batch.component';
+import { ListBatchesComponent } from './pages/batch/list/list.component';
+import { CreateBatchComponent } from './pages/batch/create/create.component';
 
 const routes: Routes = [
   { path: 'products', component: ListProductsComponent },

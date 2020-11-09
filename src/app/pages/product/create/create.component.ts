@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
-import { nullValueSelectValidator } from '../../validators/null-value-select.directive';
+import { nullValueSelectValidator } from '../../../validators/null-value-select.directive';
 
 @Component({
   selector: 'app-create-product',
-  templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css'],
+  templateUrl: './create.component.html',
   providers: [Location]
 })
 export class CreateProductComponent implements OnInit {

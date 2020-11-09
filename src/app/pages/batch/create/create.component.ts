@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
-import { nullValueSelectValidator } from '../../validators/null-value-select.directive';
+import { nullValueSelectValidator } from '../../../validators/null-value-select.directive';
 
 @Component({
   selector: 'app-create-batch',
-  templateUrl: './create-batch.component.html',
-  styleUrls: ['./create-batch.component.css'],
+  templateUrl: './create.component.html',
   providers: [Location]
 })
 export class CreateBatchComponent implements OnInit {
