@@ -4,8 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HeaderNavigationComponent } from './header-navigation/header-navigation.component';
+
 import { ListProductsComponent } from './product-page/list-products/list-products.component';
+import { CreateProductComponent } from './product-page/create-product/create-product.component';
 
 import { ListBatchesComponent } from './batch-page/list-batches/list-batches.component';
 import { CreateBatchComponent } from './batch-page/create-batch/create-batch.component';
@@ -20,14 +23,18 @@ import { DateInputComponent } from './shared/form/date-input/date-input.componen
   declarations: [
     AppComponent,
     HeaderNavigationComponent,
+
     ListProductsComponent,
+    CreateProductComponent,
+
     ListBatchesComponent,
     CreateBatchComponent,
+
     TextInputComponent,
-    SelectInputComponent,
-    DateInputComponent
     TextAreaInputComponent,
     NumberInputComponent,
+    SelectInputComponent,
+    DateInputComponent
   ],
   imports: [
     BrowserModule,
