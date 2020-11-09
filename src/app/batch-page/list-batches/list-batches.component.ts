@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BatchService } from '../../services/batch.service';
 import { Batch } from '../../models/batch';
 import { ApiResponseBatches } from '../../models/api-response-batches';
+import { BatchService } from '../../services/batch.service';
 
 @Component({
   selector: 'app-batches-list',
