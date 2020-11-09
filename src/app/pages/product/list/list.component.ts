@@ -11,6 +11,7 @@ import { ProductService } from '../../../services/product.service';
 export class ListProductsComponent implements OnInit {
 
   products: Product[];
+  productsNumber: number;
 
   constructor(private productService: ProductService) { }
 
@@ -22,6 +23,7 @@ export class ListProductsComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (response: ApiResponseProducts) => {
         this.products = response.results;
+        this.productsNumber = response.count_results;
       }
     );
   }

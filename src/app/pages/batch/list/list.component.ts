@@ -11,6 +11,7 @@ import { BatchService } from '../../../services/batch.service';
 export class ListBatchesComponent implements OnInit {
 
   batches: Batch[];
+  batchesNumber: number;
 
   constructor(private batchService: BatchService) { }
 
@@ -22,6 +23,7 @@ export class ListBatchesComponent implements OnInit {
     this.batchService.getBatches().subscribe(
       (response: ApiResponseBatches) => {
         this.batches = response.results;
+        this.batchesNumber = response.count_results;
       }
     );
   }
