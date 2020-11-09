@@ -1,0 +1,28 @@
+<div class="form-group" [formGroup]="form">
+  <label
+    for={{name}}
+    class="col-sm-6 col-form-label col-form-label-lg text-left"
+  >
+    {{label}}
+
+    <div class="input-group mt-2">
+      <textarea
+        formControlName={{name}}
+        id={{name}}
+        rows={{rows}}
+        placeholder={{placeholder}}
+        class="form-control form-control-lg"
+        [ngClass]="CSS"
+      ></textarea>
+
+      <div *ngIf="form.invalid" class="invalid-feedback">
+        <span *ngIf="requiredValid">
+          {{requiredError}}
+        </span>
+        <span *ngIf="maxlengthValid">
+          {{maxlengthError}}
+        </span>
+      </div>
+    </div>
+  </label>
+</div>

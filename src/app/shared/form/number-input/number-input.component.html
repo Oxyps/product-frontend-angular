@@ -1,0 +1,36 @@
+<div class="form-group" [formGroup]="form">
+  <label
+    for={{name}}
+    class="col-sm-6 col-form-label col-form-label-lg text-left"
+  >
+    {{label}}
+
+    <div class="input-group mt-2">
+      <div *ngIf="currencyChar" class="input-group-prepend">
+        <div class="input-group-text">{{currencyChar}}</div>
+      </div>
+
+      <input
+        formControlName={{name}}
+        id={{name}}
+        type="number"
+        step={{step}}
+        placeholder={{placeholder}}
+        class="form-control form-control-lg"
+        [ngClass]="CSS"
+      >
+
+      <div *ngIf="form.invalid" class="invalid-feedback">
+        <span *ngIf="requiredValid">
+          {{requiredError}}
+        </span>
+        <span *ngIf="minNumberValid">
+          {{minNumberError}}
+        </span>
+        <span *ngIf="maxNumberValid">
+          {{maxNumberError}}
+        </span>
+      </div>
+    </div>
+  </label>
+</div>
