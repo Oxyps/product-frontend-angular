@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BatchService } from '../../services/batch.service';
+import { Batch } from '../../models/batch';
+import { ApiResponseBatches } from '../../models/api-response-batches';
+
 @Component({
   selector: 'app-batches-list',
   templateUrl: './list-batches.component.html',
@@ -7,15 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListBatchesComponent implements OnInit {
 
-  batches = [
-    { id: 1, code: 1, size: 'M', producer: 'TheProducer1', produce_date: '11/2012/11', shelf_life: '11/2012/11' },
-    { id: 2, code: 2, size: 'M', producer: 'TheProducer2', produce_date: '11/2012/11', shelf_life: '11/2012/11' },
-    { id: 3, code: 3, size: 'M', producer: 'TheProducer3', produce_date: '11/2012/11', shelf_life: '11/2012/11' }
-  ];
+  batches: Batch[];
 
-  constructor() { }
+  constructor(private batchService: BatchService) { }
 
   ngOnInit() {
+    this.getBatches();
+  }
+
+  getBatches() {
+    this.batchService.getBatches().subscribe(
+      (response: ApiResponseBatches) => {
+        this.batches = response.results;
+      }
+    );
   }
 
 }
