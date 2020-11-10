@@ -16,6 +16,7 @@ import { NumberInputComponent } from './components/form/number-input/number-inpu
 import { SelectInputComponent } from './components/form/select-input/select-input.component';
 import { DateInputComponent } from './components/form/date-input/date-input.component';
 import { EditBatchComponent } from './pages/batch/edit/edit.component';
+import { EditProductComponent } from './pages/product/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EditBatchComponent } from './pages/batch/edit/edit.component';
     NumberInputComponent,
     SelectInputComponent,
     DateInputComponent,
-    EditBatchComponent
+    EditBatchComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

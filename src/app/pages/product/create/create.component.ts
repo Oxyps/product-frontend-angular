@@ -17,9 +17,8 @@ export class CreateProductComponent implements OnInit {
     { name: '3', value: '3' },
   ];
 
-  productForm = null;
-
   location: Location;
+  productForm: FormGroup;
 
   constructor(location: Location) {
     this.location = location;
@@ -40,7 +39,7 @@ export class CreateProductComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
+      this.saveProduct(this.productForm.value);
     } else {
       this.validateAllFormFields(this.productForm);
     }
@@ -68,4 +67,9 @@ export class CreateProductComponent implements OnInit {
       'is-invalid': !this.isFieldValid(field)
     };
   }
+
+  saveProduct(formValue) {
+    console.log(formValue);
+  }
+
 }

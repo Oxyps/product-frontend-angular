@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ListProductsComponent } from './pages/product/list/list.component';
 import { CreateProductComponent } from './pages/product/create/create.component';
+import { EditProductComponent } from './pages/product/edit/edit.component';
 
 import { ListBatchesComponent } from './pages/batch/list/list.component';
 import { CreateBatchComponent } from './pages/batch/create/create.component';
@@ -11,6 +12,7 @@ import { EditBatchComponent } from './pages/batch/edit/edit.component';
 const routes: Routes = [
   { path: 'products', component: ListProductsComponent },
   { path: 'create-product', component: CreateProductComponent },
+  { path: 'edit-product/:product_id', component: EditProductComponent },
 
   { path: 'batches', component: ListBatchesComponent },
   { path: 'create-batch', component: CreateBatchComponent },

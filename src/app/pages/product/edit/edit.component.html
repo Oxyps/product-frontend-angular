@@ -1,0 +1,69 @@
+  <div class="container col-6 d-flex align-items-center justify-content-lg-between">
+    <h2 class="my-4">Cadastro de Produtos</h2>
+
+    <button (click)="location.back()" class="btn btn-info col-3">Voltar</button>
+  </div>
+
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="onSubmit()"
+    class="container text-center"
+    autocomplete="off"
+  >
+
+    <app-text-input
+      specialChar="#"
+      [form]="productForm"
+      name="nome"
+      label="Nome do produto"
+      requiredError="O nome do produto deve ser preenchido."
+      [requiredValid]="productForm.controls.nome.errors?.required"
+      maxlengthError="O nome do produto deve ter no máximo 30 letras."
+      [maxlengthValid]="productForm.controls.nome.errors?.maxlength"
+      placeholder="Banana maçã 1kg"
+      [CSS]="displayFieldCss('nome')"
+    ></app-text-input>
+
+    <app-textarea-input
+      [form]="productForm"
+      name="descricao"
+      label="Descrição"
+      [requiredValid]="productForm.controls.descricao.errors?.required"
+      requiredError="Uma descrição do produto deve ser inserida."
+      [maxlengthValid]="productForm.controls.descricao.errors?.maxlength"
+      maxlengthError="A descrição do produto deve ter no máximo 254 caracteres."
+      rows="3"
+      placeholder="Banana madura vendida por kg"
+      [CSS]="displayFieldCss('descricao')"
+    ></app-textarea-input>
+
+    <app-number-input
+      [form]="productForm"
+      name="preco"
+      label="Preço"
+      [requiredValid]="productForm.controls.preco.errors?.required"
+      requiredError="O preço do produto deve ser preenchido."
+      [minNumberValid]="productForm.controls.preco.errors?.min"
+      minNumberError="O preço do produto deve ser positivo."
+      [maxNumberValid]="productForm.controls.preco.errors?.max"
+      maxNumberError="O preço do produto deve ser no máximo R$9.999.999.999.999,99"
+      currencyChar="R$"
+      step="0.01"
+      placeholder="Preço"
+      [CSS]="displayFieldCss('preco')"
+    ></app-number-input>
+
+    <app-select-input
+      [form]="productForm"
+      name="batch"
+      label="Lote do produto"
+      [wasntSelected]="this.productForm.controls.batch.errors ? !this.productForm.controls.batch.errors.wasSelected : false"
+      wasntSelectedError="O lote do produto deve ser especificado."
+      [options]="batchOptions"
+      [CSS]="displayFieldCss('batch')"
+    ></app-select-input>
+
+    <button type="submit" class="col-sm-8 btn btn-success form-control-lg text-center my-4">
+      Cadastrar
+    </button>
+  </form>
