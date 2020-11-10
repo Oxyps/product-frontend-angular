@@ -43,15 +43,12 @@
           <i class="cil-pencil"></i>
         </a>
 
-        <a
-          role="button"
-          aria-pressed="true"
+        <button
           class="btn btn-lg"
-          routerLink="#delete"
-          routerLinkActive="active"
+          (click)="deleteProduct(product)"
         >
           <i class="cil-trash"></i>
-        </a>
+      </button>
       </td>
     </tr>
   </tbody>

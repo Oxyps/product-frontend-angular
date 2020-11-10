@@ -19,9 +19,7 @@ export class EditProductComponent implements OnInit {
   location: Location;
   productForm: FormGroup;
 
-  batchOptions = [
-    { name: 'Escolha um lote', value: '', disabled: true }
-  ];
+  batchOptions = [];
 
   constructor(
     location: Location,
@@ -35,7 +33,6 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.loadBatchOptions();
     this.loadProductForm();
-    this.loadProductFields();
   }
 
   loadBatchOptions() {
@@ -44,12 +41,13 @@ export class EditProductComponent implements OnInit {
         response.results.map(result => {
           this.batchOptions.push({
             name: result.code,
-            value: result.code,
-            disabled: false
+            value: result.code
           });
         });
       }
     );
+
+    this.loadProductFields();
   }
 
   loadProductFields() {
@@ -90,11 +88,10 @@ export class EditProductComponent implements OnInit {
         ]
       ),
       batch: new FormControl(
-        this.batchOptions[0],
+        null,
         [nullValueSelectValidator]
       ),
     });
-    console.log(this.batchOptions[0]);
   }
 
   onSubmit() {

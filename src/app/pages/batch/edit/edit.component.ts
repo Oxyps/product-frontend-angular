@@ -18,7 +18,6 @@ export class EditBatchComponent implements OnInit {
   batchForm: FormGroup;
 
   sizeOptions = [
-    { name: 'Escolha um tamanho', value: '', disabled: true},
     { name: 'Pequeno', value: 'P', disabled: true},
     { name: 'Médio', value: 'M', disabled: true},
     { name: 'Grande', value: 'G', disabled: true},
