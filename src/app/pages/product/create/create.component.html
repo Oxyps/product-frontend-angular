@@ -56,10 +56,10 @@
     <app-select-input
       [form]="productForm"
       name="batch"
-      label="Lote do produto"
+      label="Código do lote do produto"
       [wasntSelected]="this.productForm.controls.batch.errors ? !this.productForm.controls.batch.errors.wasSelected : false"
-      wasntSelectedError="O lote dos produtos deve ser especificado."
-      [options]="batches"
+      wasntSelectedError="O código do lote dos produtos deve ser especificado."
+      [options]="batchOptions"
       [CSS]="displayFieldCss('batch')"
     ></app-select-input>
 

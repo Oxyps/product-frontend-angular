@@ -16,7 +16,7 @@ export class CreateBatchComponent implements OnInit {
   batchForm: FormGroup;
 
   sizes = [
-    { name: 'Escolha um tamanho', value: null, disabled: true },
+    { name: 'Escolha um tamanho', value: null },
     { name: 'Pequeno', value: 'P' },
     { name: 'Médio', value: 'M' },
     { name: 'Grande', value: 'G' },
@@ -28,11 +28,20 @@ export class CreateBatchComponent implements OnInit {
 
   ngOnInit() {
     this.batchForm = new FormGroup({
-      code: new FormControl('', [Validators.required, Validators.maxLength(50)] ),
-      producer: new FormControl('', [Validators.required, Validators.maxLength(20)] ),
-      size: new FormControl(this.sizes[0], [nullValueSelectValidator] ),
-      produce_date: new FormControl(null, [ Validators.required] ),
-      shelf_life: new FormControl(null, [ Validators.required] )
+      code: new FormControl(
+        '',
+        [Validators.required, Validators.maxLength(50)]
+      ),
+      producer: new FormControl(
+        '',
+        [Validators.required, Validators.maxLength(20)]
+      ),
+      size: new FormControl(
+        this.sizes[0],
+        [nullValueSelectValidator]
+      ),
+      produce_date: new FormControl( null, [Validators.required] ),
+      shelf_life: new FormControl( null, [Validators.required] )
     });
   }
 

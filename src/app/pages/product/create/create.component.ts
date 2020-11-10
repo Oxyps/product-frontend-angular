@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
+import { ApiResponseBatches } from '../../../models/api-response-batches';
+import { BatchService } from '../../../services/batch.service';
 import { nullValueSelectValidator } from '../../../validators/null-value-select.directive';
 
 @Component({
@@ -10,30 +12,60 @@ import { nullValueSelectValidator } from '../../../validators/null-value-select.
   providers: [Location]
 })
 export class CreateProductComponent implements OnInit {
-  batches = [
-    { name: 'Escolha um lote', value: null, disabled: true },
-    { name: '1', value: '1' },
-    { name: '2', value: '2' },
-    { name: '3', value: '3' },
-  ];
 
   location: Location;
   productForm: FormGroup;
 
-  constructor(location: Location) {
+  batchOptions = [
+    { name: 'Escolha um lote', value: null },
+  ];
+
+  constructor(
+    location: Location,
+    private batchService: BatchService,
+  ) {
     this.location = location;
   }
 
   ngOnInit() {
+    this.loadProductForm();
+    this.loadBatchOptions();
+  }
+
+  loadBatchOptions() {
+    this.batchService.getBatches().subscribe(
+      (response: ApiResponseBatches) => {
+        response.results.map(result => {
+          this.batchOptions.push({
+            name: result.code,
+            value: result.code
+          });
+        });
+      }
+    );
+  }
+
+  loadProductForm() {
     this.productForm = new FormGroup({
-      nome: new FormControl('', [Validators.required, Validators.maxLength(30)] ),
-      descricao: new FormControl('', [Validators.required, Validators.maxLength(254)] ),
-      preco: new FormControl(null, [
-        Validators.required,
-        Validators.min(0.01),
-        Validators.max(9999999999999.99)]
+      nome: new FormControl(
+        '',
+        [Validators.required, Validators.maxLength(30)]
       ),
-      batch: new FormControl(this.batches[0], [nullValueSelectValidator] ),
+      descricao: new FormControl(
+        '',
+        [Validators.required, Validators.maxLength(254)]
+      ),
+      preco: new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.min(0.01),
+          Validators.max(9999999999999.99)
+        ]
+      ),
+      batch: new FormControl(
+        this.batchOptions[0],
+        [nullValueSelectValidator] ),
     });
   }
 
@@ -41,17 +73,17 @@ export class CreateProductComponent implements OnInit {
     if (this.productForm.valid) {
       this.saveProduct(this.productForm.value);
     } else {
-      this.validateAllFormFields(this.productForm);
+      this.validateAllFormFields();
     }
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
+  validateAllFormFields() {
+    Object.keys(this.productForm.controls).forEach(field => {
+      const control = this.productForm.get(field);
       if (control instanceof FormControl) {
         control.markAsTouched({ onlySelf: true });
       } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
+        this.validateAllFormFields();
       }
     });
   }
