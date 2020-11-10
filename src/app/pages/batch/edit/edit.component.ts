@@ -18,9 +18,9 @@ export class EditBatchComponent implements OnInit {
   batchForm: FormGroup;
 
   sizeOptions = [
-    { name: 'Pequeno', value: 'P', disabled: true},
-    { name: 'Médio', value: 'M', disabled: true},
-    { name: 'Grande', value: 'G', disabled: true},
+    { name: 'Pequeno', value: 'P'},
+    { name: 'Médio', value: 'M'},
+    { name: 'Grande', value: 'G'},
   ];
 
   constructor(
@@ -32,11 +32,11 @@ export class EditBatchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createBatchForm();
-    this.setBatchFields();
+    this.loadBatchForm();
+    this.loadBatchFields();
   }
 
-  setBatchFields() {
+  loadBatchFields() {
     this.route.params.subscribe(params => {
       this.batchService.getBatchById(params.batch_id).subscribe(
         (batch: Batch) => {
@@ -56,7 +56,7 @@ export class EditBatchComponent implements OnInit {
     });
   }
 
-  createBatchForm() {
+  loadBatchForm() {
     this.batchForm = new FormGroup({
       code: new FormControl(
         '',
@@ -67,7 +67,7 @@ export class EditBatchComponent implements OnInit {
         [Validators.required, Validators.maxLength(20)]
       ),
       size: new FormControl(
-        this.sizeOptions[0],
+        null,
         [nullValueSelectValidator]
       ),
       produce_date: new FormControl(
