@@ -98,7 +98,7 @@ export class EditProductComponent implements OnInit {
     if (this.productForm.valid) {
       this.saveProduct(this.productForm.value);
     } else {
-      this.validateAllFormFields(this.productForm);
+      this.validateAllFormFields();
     }
   }
 

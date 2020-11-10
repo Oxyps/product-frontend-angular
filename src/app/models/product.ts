@@ -2,6 +2,6 @@ export interface Product {
   id: number;
   nome: string;
   descricao: string;
-  preco: number;
+  preco: string;
   batch: string;
 }
