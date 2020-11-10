@@ -10,6 +10,16 @@
   >Cadastrar</a>
 </div>
 
+
+<!--
+<app-table
+  [items]="batches"
+  captionLabel="Lotes cadastrados: "
+  [captionData]="batchesNumber"
+></app-table>
+-->
+
+
 <table class="container table table-hover text-center">
   <caption>Lotes cadastrados: {{batchesNumber}}</caption>
 
@@ -25,33 +35,30 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let b of batches">
-      <th class="align-middle" scope="row">{{b.code}}</th>
-      <td class="align-middle">{{b.size}}</td>
-      <td class="align-middle">{{b.producer}}</td>
-      <td class="align-middle">{{b.produce_date}}</td>
-      <td class="align-middle">{{b.shelf_life}}</td>
+    <tr *ngFor="let batch of batches">
+      <th class="align-middle" scope="row">{{batch.code}}</th>
+      <td class="align-middle">{{batch.size}}</td>
+      <td class="align-middle">{{batch.producer}}</td>
+      <td class="align-middle">{{batch.produce_date}}</td>
+      <td class="align-middle">{{batch.shelf_life}}</td>
 
       <td class="align-middle">
         <a
           role="button"
           aria-pressed="true"
           class="btn btn-lg"
-          routerLink="#edit"
+          [routerLink]="['/edit-batch', batch.id]"
           routerLinkActive="active"
         >
           <i class="cil-pencil"></i>
-        </a>
+      </a>
 
-        <a
-          role="button"
-          aria-pressed="true"
+        <button
           class="btn btn-lg"
-          routerLink="#delete"
-          routerLinkActive="active"
+          (click)="deleteBatch(batch)"
         >
           <i class="cil-trash"></i>
-        </a>
+      </button>
       </td>
     </tr>
   </tbody>

@@ -1,5 +1,11 @@
+interface Option {
+  name: string;
+  value: string;
+  disabled: boolean;
+}
+
 export interface Batch {
-  id: number;
+  id?: number;
   code: string;
   producer: string;
   produce_date: Date;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
+import { Batch } from '../../../models/batch';
 import { nullValueSelectValidator } from '../../../validators/null-value-select.directive';
 
 @Component({
@@ -10,16 +11,16 @@ import { nullValueSelectValidator } from '../../../validators/null-value-select.
   providers: [Location]
 })
 export class CreateBatchComponent implements OnInit {
+
+  location: Location;
+  batchForm: FormGroup;
+
   sizes = [
     { name: 'Escolha um tamanho', value: null, disabled: true },
     { name: 'Pequeno', value: 'P' },
     { name: 'Médio', value: 'M' },
     { name: 'Grande', value: 'G' },
   ];
-
-  batchForm = null;
-
-  location: Location;
 
   constructor(location: Location) {
     this.location = location;
@@ -37,7 +38,7 @@ export class CreateBatchComponent implements OnInit {
 
   onSubmit() {
     if (this.batchForm.valid) {
-      console.log(this.batchForm.value);
+      this.saveBatch(this.batchForm.value);
     } else {
       this.validateAllFormFields(this.batchForm);
     }
@@ -65,4 +66,9 @@ export class CreateBatchComponent implements OnInit {
       'is-invalid': !this.isFieldValid(field)
     };
   }
+
+  saveBatch(formValue) {
+    console.log(formValue);
+  }
+
 }

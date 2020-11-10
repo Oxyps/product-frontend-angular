@@ -1,0 +1,78 @@
+<div class="container col-6 d-flex align-items-center justify-content-lg-between">
+  <h2 class="my-4">Cadastro de Lotes</h2>
+
+  <button (click)="location.back()" class="btn btn-info col-3">Voltar</button>
+</div>
+
+<form
+  [formGroup]="batchForm"
+  (ngSubmit)="onSubmit()"
+  class="container text-center"
+  autocomplete="off"
+>
+
+  <app-text-input
+    specialChar="#"
+    [form]="batchForm"
+    name="code"
+    label="Código do lote"
+    requiredError="O código do lote deve ser preenchido."
+    [requiredValid]="batchForm.controls.code.errors?.required"
+    maxlengthError="O código do lote deve ter no máximo 50 caracteres."
+    [maxlengthValid]="batchForm.controls.code.errors?.maxlength"
+    placeholder="BCM12188"
+    [CSS]="displayFieldCss('code')"
+  ></app-text-input>
+
+  <app-text-input
+    [form]="batchForm"
+    name="producer"
+    label="Fabricante do lote"
+    [requiredValid]="batchForm.controls.producer.errors?.required"
+    requiredError="O fabricante do lote deve ser identificado."
+    [maxlengthValid]="batchForm.controls.producer.errors?.maxlength"
+    maxlengthError="O nome do fabricante do lote deve ter no máximo 20 caracteres."
+    placeholder="Fábrica do João LTDA"
+    [CSS]="displayFieldCss('producer')"
+  ></app-text-input>
+
+  <app-select-input
+    [form]="batchForm"
+    name="size"
+    label="Tamanho dos produtos"
+    [wasntSelected]="this.batchForm.controls.size.errors ? !this.batchForm.controls.size.errors.wasSelected : false"
+    wasntSelectedError="Um tamanho para os produtos do lote deve ser especificado."
+    [options]="sizeOptions"
+    [CSS]="displayFieldCss('size')"
+  ></app-select-input>
+
+  <app-date-input
+    [form]="batchForm"
+    name="produce_date"
+    label="Data de fabricação"
+    [requiredNotValid]="batchForm.controls.produce_date.errors?.required"
+    requiredNotValidError="A data de fabricação do lote deve ser especificada."
+    [CSS]="displayFieldCss('produce_date')"
+  ></app-date-input>
+
+  <app-date-input
+    [form]="batchForm"
+    name="shelf_life"
+    label="Data de validade"
+    [requiredNotValid]="batchForm.controls.shelf_life.errors?.required"
+    requiredNotValidError="A data de validade do lote deve ser especificada."
+    [CSS]="displayFieldCss('shelf_life')"
+  ></app-date-input>
+
+  <button
+    (click)="saveBatch()"
+    type="submit"
+    class="col-4 btn btn-success form-control-lg text-center my-4">
+    Cadastrar e listar
+  </button>
+
+  <button type="submit" class="ml-3 col-1 btn btn-success form-control-lg text-center my-4">
+    +
+  </button>
+
+</form>
