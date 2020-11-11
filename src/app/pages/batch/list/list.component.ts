@@ -28,8 +28,8 @@ export class ListBatchesComponent implements OnInit {
     );
   }
 
-  deleteBatch(batch: Batch) {
-    console.log('delete batch: ', batch);
+  handleDeleteBatch(batchId: number) {
+    console.log('delete batch: ', batchId);
   }
 
 }
