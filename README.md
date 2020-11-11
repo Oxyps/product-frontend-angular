@@ -1,6 +1,6 @@
 # Product CRUD - Frontend
 
-## Course
+## Path
 
 1. `ng new product-frontend`
 1. `npm install @coreui/coreui`

@@ -15,7 +15,7 @@
 
   <thead class="thead-dark">
     <tr>
-      <th scope="col" width="1">N°</th>
+      <th scope="col" width="1">ID</th>
       <th scope="col" width="130">Nome</th>
       <th scope="col" width="100">Preço</th>
       <th scope="col" width="200">Lote</th>
@@ -43,12 +43,25 @@
           <i class="cil-pencil"></i>
         </a>
 
+        <!-- Button trigger modal -->
         <button
+          type="button"
           class="btn btn-lg"
-          (click)="deleteProduct(product)"
+          data-toggle="modal"
+          [attr.data-target]="'#delete-product-modal' + product.id"
         >
           <i class="cil-trash"></i>
-      </button>
+        </button>
+        <!-- Button trigger modal -->
+
+        <app-delete-modal
+          [modalId]="'delete-product-modal' + product.id"
+          modalTitle="Deseja mesmo DELETAR o produto?"
+          modalBody="Se clicar no botão DELETAR, o produto será apagado dos nossos registros."
+          closeButtonLabel="Voltar"
+          continueButtonLabel="Deletar"
+          [handleClickContinueButton]="handleDeleteProduct.bind(this, product.id)"
+        ></app-delete-modal>
       </td>
     </tr>
   </tbody>

@@ -28,8 +28,8 @@ export class ListProductsComponent implements OnInit {
     );
   }
 
-  deleteProduct(product: Product) {
-    console.log('delete: ', product);
+  handleDeleteProduct(productId: string) {
+    console.log('delete: ', productId);
   }
 
 }
