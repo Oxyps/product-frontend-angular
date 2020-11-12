@@ -13,15 +13,13 @@ export class ListBatchesComponent implements OnInit {
   batches: Batch[];
   batchesNumber: number;
 
-  // must be ordered by batches attributes
+  // this order induces in the table column order
   batchTableHeaders = [
-    {width: '100', title: 'Código'},
-    {width: '100', title: 'ID'},
-    {width: '120', title: 'Data de fabricação'},
-    {width: '100', title: 'Fabricante'},
-    {width: '120', title: 'Data de validade'},
-    {width: '100', title: 'Tamanhos'},
-    {width: '100', title: 'Ações'}
+    {name: 'code', width: '15%', title: 'Código'},
+    {name: 'producer', width: '15%', title: 'Fabricante'},
+    {name: 'produce_date', width: '15%', title: 'Data de fabricação'},
+    {name: 'shelf_life', width: '15%', title: 'Data de validade'},
+    {name: 'size', width: '10%', title: 'Tamanhos'},
   ];
 
   constructor(private batchService: BatchService) { }
