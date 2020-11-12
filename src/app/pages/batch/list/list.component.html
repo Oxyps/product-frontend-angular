@@ -10,69 +10,17 @@
   >Cadastrar</a>
 </div>
 
-
-<!--
 <app-table
+  name="batch"
+  [itemHeaders]="batchTableHeaders"
   [items]="batches"
-  captionLabel="Lotes cadastrados: "
-  [captionData]="batchesNumber"
+  [captionLabel]="'Lotes cadastrados: ' + batchesNumber"
+
+  editLink="/edit-batch"
+
+  [handleDeleteButtonClick]="handleDeleteBatch"
+  deleteModalTitle="Deseja mesmo DELETAR o lote?"
+  deleteModalBody="Se você clicar no botão DELETAR, o lote será apagado dos nossos registros."
+  deleteModalCloseButtonLabel="Voltar"
+  deleteModalContinueButtonLabel="Deletar"
 ></app-table>
--->
-
-
-<table class="container table table-hover text-center">
-  <caption>Lotes cadastrados: {{batchesNumber}}</caption>
-
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" width="100">Código</th>
-      <th scope="col" width="10">Tamanho</th>
-      <th scope="col" width="200">Fabricante</th>
-      <th scope="col" width="150">Data de fabricação</th>
-      <th scope="col" width="150">Data de validade</th>
-      <th scope="col" width="150">Ações</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let batch of batches">
-      <th class="align-middle" scope="row">{{batch.code}}</th>
-      <td class="align-middle">{{batch.size}}</td>
-      <td class="align-middle">{{batch.producer}}</td>
-      <td class="align-middle">{{batch.produce_date}}</td>
-      <td class="align-middle">{{batch.shelf_life}}</td>
-
-      <td class="align-middle">
-        <a
-          role="button"
-          aria-pressed="true"
-          class="btn btn-lg"
-          [routerLink]="['/edit-batch', batch.id]"
-          routerLinkActive="active"
-        >
-          <i class="cil-pencil"></i>
-        </a>
-
-        <!-- Button trigger modal -->
-        <button
-          type="button"
-          class="btn btn-lg"
-          data-toggle="modal"
-          [attr.data-target]="'#delete-batch-modal' + batch.id"
-        >
-          <i class="cil-trash"></i>
-        </button>
-        <!-- Button trigger modal -->
-
-        <app-delete-modal
-          [modalId]="'delete-batch-modal' + batch.id"
-          modalTitle="Deseja mesmo DELETAR o lote?"
-          modalBody="Se você clicar no botão DELETAR, o lote será apagado dos nossos registros."
-          closeButtonLabel="Voltar"
-          continueButtonLabel="Deletar"
-          [handleClickContinueButton]="handleDeleteBatch.bind(this, batch.id)"
-        ></app-delete-modal>
-      </td>
-    </tr>
-  </tbody>
-</table>

@@ -10,6 +10,22 @@
   >Cadastrar</a>
 </div>
 
+<app-table
+  name="product"
+  [itemHeaders]="productTableHeaders"
+  [items]="products"
+  [captionLabel]="'Produtos cadastrados: ' + productsNumber"
+
+  editLink="/edit-product"
+
+  [handleDeleteButtonClick]="handleDeleteProduct"
+  deleteModalTitle="Deseja mesmo DELETAR o produto?"
+  deleteModalBody="Se clicar no botão DELETAR, o produto será apagado dos nossos registros."
+  deleteModalCloseButtonLabel="Voltar"
+  deleteModalContinueButtonLabel="Deletar"
+></app-table>
+
+<!--
 <table class="container table table-hover text-center">
   <caption>Produtos cadastrados: {{productsNumber}}</caption>
 
@@ -43,7 +59,6 @@
           <i class="cil-pencil"></i>
         </a>
 
-        <!-- Button trigger modal -->
         <button
           type="button"
           class="btn btn-lg"
@@ -52,7 +67,6 @@
         >
           <i class="cil-trash"></i>
         </button>
-        <!-- Button trigger modal -->
 
         <app-delete-modal
           [modalId]="'delete-product-modal' + product.id"
@@ -66,3 +80,4 @@
     </tr>
   </tbody>
 </table>
+-->
