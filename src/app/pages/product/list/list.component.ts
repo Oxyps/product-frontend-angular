@@ -13,14 +13,12 @@ export class ListProductsComponent implements OnInit {
   products: Product[];
   productsNumber: number;
 
-  // must be ordered by products attributes
+  // this order induces in the table column order
   productTableHeaders = [
-    {width: '50', title: 'Lote'},
-    { title: 'Descrição'},
-    {width: '50', title: 'ID'},
-    {width: '200', title: 'Nome'},
-    {width: '150', title: 'Preço'},
-    {width: '150', title: 'Ações'}
+    {name: 'nome', width: '20%', title: 'Nome'},
+    {name: 'preco', width: '15%', title: 'Preço', symbol: 'R$'},
+    {name: 'batch', width: '15%', title: 'Lote'},
+    {name: 'descricao', width: '30%', title: 'Descrição'},
   ];
 
   constructor(private productService: ProductService) { }

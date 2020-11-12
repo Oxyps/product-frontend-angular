@@ -1,25 +1,34 @@
-<table class="container table table-hover text-center">
+<table class="container table table-hover text-center text-break">
   <caption>{{captionLabel}}</caption>
 
   <thead class="thead-dark">
     <tr>
+      <th width="5%" scope="col">N°</th>
+
       <th
-        *ngFor="let itemHead of itemHeaders"
-        width={{itemHead.width}}
+        *ngFor="let head of itemHeaders"
+        width={{head.width}}
         scope="col"
       >
-        {{itemHead.title}}
+        {{head.title}}
       </th>
+
+      <th width="15%" scope="col">Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <tr
-      class="align-middle"
       *ngFor="let itemObject of items; let i = index"
     >
-      <td *ngFor="let itemAttribute of itemObject | keyvalue">
-        {{itemAttribute.value}}
+      <th class="align-middle" scope="row">{{i + 1}}</th>
+
+      <td
+        class="align-middle"
+        *ngFor="let header of itemHeaders"
+      >
+        <span *ngIf="header.symbol">{{header.symbol}} </span>
+        {{itemObject[header.name]}}
       </td>
 
       <td class="align-middle">
@@ -56,3 +65,36 @@
     </tr>
   </tbody>
 </table>
+
+<!--
+
+  items = [ {id, code, attr}, {...} ]
+  item_headers = [ {name, title}, {...} ]
+
+  <thead>
+    <tr>
+      <th>N°<th>
+
+      <th
+        *ngFor=" header of item_headers "
+      >{{ header.title }}</th>
+
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      *ngFor=" item of items; i = index " -> item = {id, code, attr}
+    >
+      <th>{{ i + 1 }}</th>
+
+      <td
+        *ngFor=" header of item_headers "
+      >{{ item[header.name] }}</td>
+
+      <td>Action Buttons...</td>
+    </tr>
+  </tbody>
+
+ -->
