@@ -13,6 +13,17 @@ export class ListBatchesComponent implements OnInit {
   batches: Batch[];
   batchesNumber: number;
 
+  // must be ordered by batches attributes
+  batchTableHeaders = [
+    {width: '100', title: 'Código'},
+    {width: '100', disabled: true, title: 'ID'},
+    {width: '120', title: 'Data de fabricação'},
+    {width: '100', title: 'Fabricante'},
+    {width: '120', title: 'Data de validade'},
+    {width: '100', title: 'Tamanhos'},
+    {width: '100', title: 'Ações'}
+  ];
+
   constructor(private batchService: BatchService) { }
 
   ngOnInit() {

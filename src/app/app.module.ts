@@ -18,6 +18,7 @@ import { DateInputComponent } from './components/form/date-input/date-input.comp
 import { EditBatchComponent } from './pages/batch/edit/edit.component';
 import { EditProductComponent } from './pages/product/edit/edit.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     DateInputComponent,
     EditBatchComponent,
     EditProductComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

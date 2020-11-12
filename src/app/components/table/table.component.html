@@ -1,0 +1,58 @@
+<table class="container table table-hover text-center">
+  <caption>{{captionLabel}}</caption>
+
+  <thead class="thead-dark">
+    <tr>
+      <th
+        *ngFor="let itemHead of itemHeaders"
+        width={{itemHead.width}}
+        scope="col"
+      >
+        {{itemHead.title}}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      class="align-middle"
+      *ngFor="let itemObject of items; let i = index"
+    >
+      <td *ngFor="let itemAttribute of itemObject | keyvalue">
+        {{itemAttribute.value}}
+      </td>
+
+      <td class="align-middle">
+        <a
+          role="button"
+          aria-pressed="true"
+          class="btn btn-lg"
+          [routerLink]="[editLink, itemObject.id]"
+          routerLinkActive="active"
+        >
+          <i class="cil-pencil"></i>
+        </a>
+
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-lg"
+          data-toggle="modal"
+          [attr.data-target]="'#' + name + itemObject.id"
+        >
+          <i class="cil-trash"></i>
+        </button>
+        <!-- Button trigger modal -->
+
+        <app-delete-modal
+          [modalId]="name + itemObject.id"
+          modalTitle={{deleteModalTitle}}
+          modalBody={{deleteModalBody}}
+          closeButtonLabel={{deleteModalCloseButtonLabel}}
+          continueButtonLabel={{deleteModalContinueButtonLabel}}
+          [handleClickContinueButton]="handleDeleteButtonClick.bind(this, itemObject.id)"
+        ></app-delete-modal>
+      </td>
+    </tr>
+  </tbody>
+</table>
