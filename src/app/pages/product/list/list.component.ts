@@ -13,6 +13,16 @@ export class ListProductsComponent implements OnInit {
   products: Product[];
   productsNumber: number;
 
+  // must be ordered by products attributes
+  productTableHeaders = [
+    {width: '50', title: 'Lote'},
+    { title: 'Descrição'},
+    {width: '50', title: 'ID'},
+    {width: '200', title: 'Nome'},
+    {width: '150', title: 'Preço'},
+    {width: '150', title: 'Ações'}
+  ];
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {

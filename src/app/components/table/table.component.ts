@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input() name: string;
-  @Input() itemHeaders: {width?: string, disabled?: boolean, title: string}[];
+  @Input() itemHeaders: {width?: string, title: string}[];
   @Input() items: any[];
   @Input() captionLabel: string;
 
